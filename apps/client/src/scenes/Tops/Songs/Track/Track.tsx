@@ -17,7 +17,7 @@ import { useTrackGrid } from "./TrackGrid";
 interface TrackProps {
   track: TrackType;
   artists: Artist[];
-  album: Album | null;
+  album?: Album;
   playable?: boolean;
   count: number;
   totalCount: number;
@@ -53,7 +53,7 @@ export default function Track(props: TrackProps) {
     },
     {
       ...trackGrid.cover,
-      node: playable && album && <PlayButton id={track.id} covers={album.images} />,
+      node: playable && <PlayButton id={track.id} covers={album?.images || []} />,
     },
     {
       ...trackGrid.title,
